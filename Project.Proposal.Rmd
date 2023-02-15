@@ -1,0 +1,60 @@
+---
+title: "Project Proposal"
+author: "Rya"
+date: "2023-02-15"
+output: html_document
+
+Project Proposal
+
+Group Members: Camille Zahn, Rya Radfar, Erik Lepe, Cam Smith
+
+Potential Datasets
+
+Main Dataset:
+https://www.kaggle.com/datasets/kfoster150/avg-cost-of-undergrad-college-by-state
+
+Potential Supplementary Datasets:
+https://www.kaggle.com/datasets/wsj/college-salaries  -”salaries by college type csv” or “salaries by region csv”
+https://www.kaggle.com/datasets/theworldbank/poverty-and-equity-database
+https://www.kaggle.com/datasets/kaggle/college-scorecard
+https://www.kaggle.com/datasets/faressayah/college-data
+
+Data and Audience:
+What is the dataset you’ll be working with? Please include background on who collected the data, where you accessed it, and any additional information we should know about how this data came to be.
+The first dataset that we will be working with is titled “Avg Cost of Undergrad College by State”. This data set was found on Kaggle
+The data is compiled from the National Center of Education Statistics Annual Digest 
+This dataset shows the average undergraduate tuition and fees along with room and board rates for full-time students in degree-granting postsecondary institutions, by control and level of institution and state or jurisdiction
+This data set is updated frequently, and was last updated a month ago
+Who is your target audience? Depending on the domain of your data, there may be a variety of audiences interested in using the dataset. You should home in on one of these audiences.
+	The target audience is any undergraduate student or prospective student studying the cost of universities across the United States. Parents/guardians of prospective college students are also a target demographic as they commonly are the ones paying for their child's college education.
+What does your audience want to learn from your data? Please list out at least 3 specific questions that your project will answer for your audience.
+Where, on average, are the most and least expensive places to study?
+How much variation is there in the cost of tuition across the United States by state?
+How do private vs. public university tuition vary (especially by state)?
+How is the cost of undergraduate education related to poverty rates in specific states?
+
+
+
+
+
+
+
+Technical Description:
+How will you be reading in your data (i.e., are you using an API, or is it a static .csv/.json file)?
+We will be reading in our data with a .csv file
+All possible data sets are .csv files
+
+What types of data-wrangling (reshaping, reformatting, etc.) will you need to do to your data?
+We may need to reformat the data to only include information that is useful for our specific project and question
+We will also need to figure out how to format the data into a map showing the average cost of undergraduate education in each state
+
+What (major/new) libraries will be using in this project (no need to list common libraries that are used in many projects such as dplyr)
+
+As of now, only common libraries will need to be used. Possibly kable or a mapping library.
+
+What questions, if any, will you be answering with statistical analysis/machine learning?
+
+What major challenges do you anticipate?
+Learning to use Shiny
+Making connections and drawing conclusions from data sets
+
