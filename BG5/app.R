@@ -9,13 +9,12 @@ data <- read_delim("nces330_20.csv")
 ui <- fluidPage(
   
   # Application title
-  titlePanel("PS06-shiny"),
+  titlePanel("Average Cost of College"),
   
   
   mainPanel(
     tabsetPanel(
-      tabPanel("About", "This page includes a", strong("Plot"), "panel and", em("Table"), "panel
-                   for the global temperature data."),
+      tabPanel("About", "Gotta write some stuff here."),
       tabPanel("Plot", 
                sidebarLayout(
                  sidebarPanel(
@@ -42,7 +41,18 @@ ui <- fluidPage(
                  mainPanel(
                    dataTableOutput("dataTable")
                  )
-               ))
+               )),
+      tabPanel("Another thing",
+               sidebarLayout(
+                 sidebarPanel(
+                   textOutput("Another widget here")
+                 ),
+                 mainPanel(
+                   textOutput("A graph or something")
+                 )
+               )),
+      tabPanel("Conclusion", "conclusion text"
+               )
     )))
 
 
