@@ -39,7 +39,7 @@ ui <- fluidPage(
                    dataTableOutput("dataTable")
                  )
                )),
-      tabPanel("Eric's dataset plot",
+      tabPanel("Erik's dataset plot",
                sidebarLayout(
                  sidebarPanel(
                    textOutput("Another widget here")
