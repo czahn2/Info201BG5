@@ -15,7 +15,7 @@ ui <- fluidPage(
   mainPanel(
     tabsetPanel(
       tabPanel("About", "A single page providing an overview of the project – what major questions are you seeking to answer, and what data will you use to answer those questions? This should be the first page that you see when you oppen the app. You should include some “additional flare” on this landing page, such as an image.",
-      img(src = "University-of-Washington-1.jpeg")),
+               img(src = "University-of-Washington-1.jpeg")),
       tabPanel("Plot", "text about plot",
                sidebarLayout(
                  sidebarPanel(
@@ -39,7 +39,7 @@ ui <- fluidPage(
                    dataTableOutput("dataTable")
                  )
                )),
-      tabPanel("Another thing",
+      tabPanel("Eric's dataset plot",
                sidebarLayout(
                  sidebarPanel(
                    textOutput("Another widget here")
@@ -48,8 +48,13 @@ ui <- fluidPage(
                    textOutput("A graph or something")
                  )
                )),
+      tabPanel("Additional Info", "Since our data set only provides data up to 2021, these subsequent graphics show current 2023 data for Average In-State Tuition, Average Out-Of-State Tuition, and Tuition As A Percent Of Median Income for each state",
+               img(src = "https://i.imgur.com/pviIcVI.jpg"), img(src = "https://i.imgur.com/KQPWqbT.jpg"), img(src = "https://i.imgur.com/QIoQie8.jpg")
+      ),
+      
+      
       tabPanel("Conclusion", "Summary takeaways, a page that hones in on at least 2 major takeaways from the project, at least one related to your analysis, and another to the dataset. Feel free to incorporate tables, graphics, or other elements to convey these conclusions."
-               )
+      )
     ))
 )
 
