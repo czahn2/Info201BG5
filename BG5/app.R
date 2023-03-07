@@ -14,8 +14,19 @@ ui <- fluidPage(
   
   mainPanel(
     tabsetPanel(
-      tabPanel("About", "A single page providing an overview of the project – what major questions are you seeking to answer, and what data will you use to answer those questions? This should be the first page that you see when you oppen the app. You should include some “additional flare” on this landing page, such as an image.",
-               img(src = "University-of-Washington-1.jpeg")),
+      tabPanel("About", "This website aims to relay information about the",
+               strong("average cost of college tuition and room and board"), 
+               "across the United States. Using data, we will be answering important
+               questions such as where, on average are the most and least expensive
+               places to study? How is the cost of undergraduate education related to 
+               poverty rates in specific states? And how does earning a college degree
+               impact long term financial outcomes? We will be using two main datasets
+               to answer these questions. Our main data set was found from", strong("Kaggle"),
+               "and the dataset is reliable and frequently updated with new information. 
+               Our second dataset is from the US government, and contains data from
+               the census. The link to our first and second datasets can be found", 
+               a("here", href = "https://www.kaggle.com/datasets/kfoster150/avg-cost-of-undergrad-college-by-state?resource=download"),
+               "and", a("here", href = "https://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html")),
       tabPanel("Plot", "text about plot",
                sidebarLayout(
                  sidebarPanel(
