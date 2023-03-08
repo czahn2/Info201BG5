@@ -27,7 +27,10 @@ ui <- fluidPage(
                the census. The link to our first and second datasets can be found", 
                a("here", href = "https://www.kaggle.com/datasets/kfoster150/avg-cost-of-undergrad-college-by-state?resource=download"),
                "and", a("here", href = "https://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html")),
-      tabPanel("Plot", "text about plot",
+      tabPanel("Plot", "This plot shows the average cost of undergraduate college across the US.
+               This graph incorporates the two most costly aspects of college - tuition, along with
+               room and board. You may select which cost you would like to view using
+               the menu on the left.",
                sidebarLayout(
                  sidebarPanel(
                    checkboxGroupInput("Expense", label = "Choose expense",
@@ -37,7 +40,10 @@ ui <- fluidPage(
                  mainPanel(plotOutput("plot"))
                )),     
       
-      tabPanel("Table", "text about table",
+      tabPanel("Table", "This table shows every US state along with its average total cost
+               of private and public institutions in the state throughout the last decade.
+               You may use the slider on the left to select which years data you would like
+               to view.",
                sidebarLayout(
                  sidebarPanel(
                    sliderInput("year_range", label = "Choose the year range",
@@ -64,7 +70,31 @@ ui <- fluidPage(
       ),
       
       
-      tabPanel("Conclusion", "Summary takeaways, a page that hones in on at least 2 major takeaways from the project, at least one related to your analysis, and another to the dataset. Feel free to incorporate tables, graphics, or other elements to convey these conclusions."
+      tabPanel("Conclusion", "Altogether, the", strong("average price of college has increased 
+                  over the last decade"), ", as seen in the graph. Tuition and fees make up the
+               majority of expenses. Despite tuition increasing, the return on investment
+               in a college education also increased. It was also observed that", strong(
+                 "Vermont"), "and", strong("New Hampshire"), "have two of the highest average
+               costs for college. The states with the lowest average cost are", strong("Wyoming"),
+               "and", strong("Utah"), ". The cost of college and household wealth varies across
+               US states. As seen in the maps,", em("Southern and East Coast states"), "spend more
+               from their income on the costs of college in comparison to all US states. This aligns
+               the cost of in-state and out-of-state tuition, since these states have higher average
+               costs of college. In relation to household income, states with higher tuition averages
+               see families putting a larger percentage of their income towards their childrens'
+               education. This is true for both private and public establishments. Long-term,
+               these results are aimed to help simplify the financial aspect of choosing a college
+               to attend. The results of our answered questions show that despite where one
+               attends college, costs are rising across the US. The data we used to answer our questions
+               are of high quality and were gathered through proper means as they accurately 
+               represent the US population. The data is assumed to give unbiased results, as the 
+               sample methods used are deemed to be accurate. While no specific groups are harmed
+               by the data collected, some groups may be underrepresented, and the financial backgrounds
+               and situations of these households are not known. This is important to note as financial
+               history and situations are often a key factor in deciding which college to attend.
+               To advance this project, it would be beneficial to study a sample of subjects, some that 
+               obtained a college degree and some that did not, to observe how long-term income
+               and career outcomes are related to earning a college degree."
       )
     ))
 )
