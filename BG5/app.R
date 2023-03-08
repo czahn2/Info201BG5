@@ -59,18 +59,20 @@ ui <- fluidPage(
                    dataTableOutput("dataTable")
                  )
                )),
-      tabPanel("Map", "Information about Map",
+      tabPanel("Household Income Map", "",
+               
                sidebarLayout(
                  sidebarPanel(
                    p("Select a year to see the average household income:"),
                    selectInput("mapYear",
                                "Year",
                                unique(hhIncome2013_21$year)
-                               
                    ),
-                   
                  ),
                  mainPanel(
+                   p("The map visualizes the average household income in the United States. 
+                The darker purple in the map represents an average higher income, while the lighter
+                represents an average lower income."),
                    plotlyOutput("plotlyMap")
                  )
                )
@@ -138,6 +140,42 @@ server <- function(input, output) {
   })
   output$year_text <- renderText({
     paste("You chose:", input$year_range[1],"-", input$year_range[2])
+  })
+  
+  mapData <- reactive({
+    joe <- hhIncome2013_21 %>% 
+      filter(hhIncome2013_21$year %in% input$mapYear) 
+    if(nrow(joe) > 1) 
+      joe <- hhIncome2013_21 %>% 
+        filter(hhIncome2013_21$year == input$mapYear)
+    else
+      joe
+  })
+  
+  output$plotlyMap <- renderPlotly({
+    plot_ly(mapData(), 
+            dataSet <- mapData(),
+            dataSet$hover <- with(dataSet, paste(dataSet$state,
+                                                 '<br>', "Household Income", dataSet$avgHHIncome,
+                                                 '<br>' , "Poverty Rate", dataSet$povertyRate)),
+            
+            l <- list(color = toRGB("white"), width = 2),
+            # specify some map projection/options
+            graphics <- list(scope = 'usa'),
+            
+            map <- plot_geo(dataSet, locationmode = 'USA-states'),
+            map <- map %>% add_trace(
+              z = dataSet$avgHHIncome, text = dataSet$hover, locations = dataSet$abbrev,
+              color = dataSet$colorsID, colors = 'Purples'
+            ),
+            
+            map <- map %>% colorbar(title = "Thousands USD"),
+            
+            map <- map %>% layout(
+              title = '2013-2021 Household Income in each U.S State<br>(Hover for breakdown)'
+              , geo = graphics )
+    )
+    map
   })
 
 
