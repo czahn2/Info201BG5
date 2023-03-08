@@ -73,7 +73,12 @@ ui <- fluidPage(
                    p("The map visualizes the average household income in the United States. 
                 The darker purple in the map represents an average higher income, while the lighter
                 represents an average lower income."),
-                   plotlyOutput("plotlyMap")
+                   plotlyOutput("plotlyMap"),
+                   p("Top 5 highest household income of selected year"),
+                   tableOutput("top5"),
+                   p("Top 5 lowest household income of selected year"),
+                   tableOutput("bot5")
+                   
                  )
                )
       ),
@@ -177,6 +182,22 @@ server <- function(input, output) {
     )
     map
   })
+  
+  output$top5 <- renderTable({
+    joe <- mapData()
+    joe %>% 
+      arrange(desc(joe$avgHHIncome)) %>% 
+      head(5)
+    
+  })
+  
+  output$bot5 <- renderTable({
+    joe <- mapData() 
+    joe %>% 
+      arrange(desc(joe$avgHHIncome)) %>% 
+      tail(5)
+  })
+  
 
 
 
