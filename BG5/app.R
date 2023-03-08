@@ -29,7 +29,7 @@ ui <- fluidPage(
                Our second dataset is from the US government, and contains data from
                the census. The link to our first and second datasets can be found", 
                a("here", href = "https://www.kaggle.com/datasets/kfoster150/avg-cost-of-undergrad-college-by-state?resource=download"),
-               "and", a("here", href = "https://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html")),
+               "and", a("here", href = "https://www.census.gov/data/datasets/time-series/demo/cps/cps-asec.html"), img(src = "University-of-Washington-1.jpeg", style ="width: 500px")),
       tabPanel("Plot", "This plot shows the average cost of undergraduate college across the US.
                This graph incorporates the two most costly aspects of college - tuition, along with
                room and board. You may select which cost you would like to view using
@@ -59,11 +59,22 @@ ui <- fluidPage(
                    dataTableOutput("dataTable")
                  )
                )),
-      tabPanel("Map",
+      tabPanel("Household Income Map", "Information about Map",
+               sidebarLayout(
+                 sidebarPanel(
+                   p("Select a year to see the average household income:"),
+                   selectInput("mapYear",
+                               "Year",
+                               unique(hhIncome2013_21$year)
+                               
+                   ),
+                   
+                 ),
                  mainPanel(
                    plotlyOutput("plotlyMap")
                  )
-               )),
+               )
+      ),
       tabPanel("Additional Info", "Since our data set only provides data up to 2021, these subsequent graphics show current 2023 data for Average In-State Tuition, Average Out-Of-State Tuition, and Tuition As A Percent Of Median Income for each state",
                img(src = "https://i.imgur.com/pviIcVI.jpg"), img(src = "https://i.imgur.com/KQPWqbT.jpg"), img(src = "https://i.imgur.com/QIoQie8.jpg")
       ),
@@ -95,8 +106,8 @@ ui <- fluidPage(
                "To advance this project, it would be beneficial to study a sample of subjects, some that 
                obtained a college degree and some that did not, to observe how long-term income
                and career outcomes are related to earning a college degree.",
-     img(src = "Conclusion_graph.JPG") )
-    ))
+     img(src = "Conclusion_graph.JPG", style ="width: 500px") )
+    )))
 
 
 
@@ -128,7 +139,7 @@ server <- function(input, output) {
   output$year_text <- renderText({
     paste("You chose:", input$year_range[1],"-", input$year_range[2])
   })
-}
+
 
 mapData <- reactive({
   joe <- hhIncome2013_21 %>% 
@@ -163,8 +174,9 @@ output$plotlyMap <- renderPlotly({
             title = '2013-2021 Household Income in each U.S State<br>(Hover for breakdown)'
             , geo = graphics )
   )
-  map
+ # map
 }) 
+}
 
 # Run the application 
 shinyApp(ui = ui, server = server)
