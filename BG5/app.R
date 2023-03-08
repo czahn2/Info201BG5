@@ -59,7 +59,7 @@ ui <- fluidPage(
                    dataTableOutput("dataTable")
                  )
                )),
-      tabPanel("Household Income Map", "Information about Map",
+      tabPanel("Map", "Information about Map",
                sidebarLayout(
                  sidebarPanel(
                    p("Select a year to see the average household income:"),
@@ -141,41 +141,7 @@ server <- function(input, output) {
   })
 
 
-mapData <- reactive({
-  joe <- hhIncome2013_21 %>% 
-    filter(hhIncome2013_21$year %in% input$mapYear) 
-  if(nrow(joe) > 1) 
-    joe <- hhIncome2013_21 %>% 
-      filter(hhIncome2013_21$year == input$mapYear)
-  else
-    joe
-})
 
-output$plotlyMap <- renderPlotly({
-  plot_ly(mapData(), 
-          dataSet <- mapData(),
-          dataSet$hover <- with(dataSet, paste(dataSet$state,
-                                               '<br>', "Household Income", dataSet$avgHHIncome,
-                                               '<br>' , "Poverty Rate", dataSet$povertyRate)),
-          
-          l <- list(color = toRGB("white"), width = 2),
-          # specify some map projection/options
-          graphics <- list(scope = 'usa'),
-          
-          map <- plot_geo(dataSet, locationmode = 'USA-states'),
-          map <- map %>% add_trace(
-            z = dataSet$avgHHIncome, text = dataSet$hover, locations = dataSet$abbrev,
-            color = dataSet$colorsID, colors = 'Purples'
-          ),
-          
-          map <- map %>% colorbar(title = "Thousands USD"),
-          
-          map <- map %>% layout(
-            title = '2013-2021 Household Income in each U.S State<br>(Hover for breakdown)'
-            , geo = graphics )
-  )
- # map
-}) 
 }
 
 # Run the application 
