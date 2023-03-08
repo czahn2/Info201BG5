@@ -94,8 +94,8 @@ ui <- fluidPage(
                history and situations are often a key factor in deciding which college to attend.
                To advance this project, it would be beneficial to study a sample of subjects, some that 
                obtained a college degree and some that did not, to observe how long-term income
-               and career outcomes are related to earning a college degree."
-      )
+               and career outcomes are related to earning a college degree.",
+     img(src = "Conclusion_graph.JPG") )
     ))
 )
 
@@ -119,6 +119,9 @@ server <- function(input, output) {
       geom_line() +
       geom_point()
   })
+  
+    
+  
   output$color_text <- renderText({
     paste("You chose: ", input$color)
   })
